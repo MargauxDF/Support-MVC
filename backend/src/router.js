@@ -2,12 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
-const itemControllers = require("./controllers/itemControllers");
+const wilderControllers = require("./controllers/wilderControllers");
 
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
+// Gestion des wilders
+router.get("/api/wilders", wilderControllers.browse);
+router.get("/api/wilders/:id", wilderControllers.read);
+router.put("/api/wilders/:id", wilderControllers.edit);
+router.post("/api/wilders/", wilderControllers.add);
+router.delete("/api/wilders/:id", wilderControllers.destroy);
 
 module.exports = router;
