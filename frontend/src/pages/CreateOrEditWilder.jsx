@@ -15,13 +15,20 @@ function CreateOrEditWilder() {
   const [wilder, setWilder] = useState({
     firstname: "",
     lastname: "",
+    username: "",
+    password: "",
     email: "",
     city: "",
   });
 
   const canBeSubmit = () => {
     return (
-      !wilder.firstname || !wilder.lastname || !wilder.email || !wilder.city
+      !wilder.firstname ||
+      !wilder.lastname ||
+      !wilder.username ||
+      !wilder.password ||
+      !wilder.email ||
+      !wilder.city
     );
   };
 
@@ -39,9 +46,12 @@ function CreateOrEditWilder() {
         });
     } else {
       setWilder({
-        first_name: "",
-        last_name: "",
-        age: "",
+        firstname: "",
+        lastname: "",
+        username: "",
+        password: "",
+        email: "",
+        city: "",
       });
     }
   }, [id]);
@@ -54,7 +64,14 @@ function CreateOrEditWilder() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (wilder.firstname && wilder.lastname && wilder.email && wilder.city) {
+    if (
+      wilder.firstname &&
+      wilder.lastname &&
+      wilder.username &&
+      wilder.password &&
+      wilder.email &&
+      wilder.city
+    ) {
       if (id) {
         // édition
         axios
@@ -74,6 +91,8 @@ function CreateOrEditWilder() {
             setWilder({
               firstname: "",
               lastname: "",
+              username: "",
+              password: "",
               email: "",
               city: "",
             });
@@ -109,6 +128,30 @@ function CreateOrEditWilder() {
             onChange={handleChange}
             required
             value={wilder.lastname}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="username">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="username"
+            placeholder="Enter your username"
+            name="username"
+            onChange={handleChange}
+            required
+            value={wilder.username}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Enter your password"
+            name="password"
+            onChange={handleChange}
+            required
+            value={wilder.password}
           />
         </Form.Group>
 

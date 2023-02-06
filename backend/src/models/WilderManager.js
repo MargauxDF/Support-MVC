@@ -14,8 +14,15 @@ class WilderManager extends AbstractManager {
 
   insert(wilder) {
     return this.connection.query(
-      `insert into ${this.table} (firstname, lastname, city, email) values (?, ?, ?, ?)`,
-      [wilder.firstname, wilder.lastname, wilder.city, wilder.email]
+      `insert into ${this.table} (firstname, lastname, username, password, city, email) values (?, ?, ?, ?, ?, ?)`,
+      [
+        wilder.firstname,
+        wilder.lastname,
+        wilder.username,
+        wilder.password,
+        wilder.city,
+        wilder.email,
+      ]
     );
   }
 }
